@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import Empty from "./Empty";
+import Link from "next/link";
 
 const Listing = () => {
   const { user } = useUser();
@@ -14,7 +15,9 @@ const Listing = () => {
         <h2 className="font-bold text-2xl">
           Hello {user?.fullName || "Guest"}
         </h2>
-        <Button>Redesign Room</Button>
+        <Link href="/dashboard/create-new">
+          <Button>Redesign Room</Button>
+        </Link>
       </div>
       {userRoomList.length === 0 ? <Empty /> : <div></div>}
     </div>
