@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
-const DesignType = () => {
+const DesignType = ({ selectedDesign }) => {
   const Designs = [
     {
       name: "Modern",
@@ -20,6 +20,8 @@ const DesignType = () => {
       image: "/traditional.jpg",
     },
   ];
+
+  const [selectedDesignType, setSelectedDesignType] = useState(null);
   return (
     <div>
       <label className="text-gray-500">Room Interior Design Type</label>
@@ -28,9 +30,18 @@ const DesignType = () => {
           <div
             className="border p-4 rounded-lg shadow-md flex flex-col items-center"
             key={design.image}
+            onClick={() => {
+              setSelectedDesignType(design.name);
+            }}
           >
             <div className="w-full h-32 relative">
               <Image
+                style={{
+                  border:
+                    selectedDesignType === design.name
+                      ? "2px solid blue"
+                      : "none", // Add border if selectedDesignType is true
+                }}
                 src={design.image}
                 layout="fill"
                 objectFit="cover"
