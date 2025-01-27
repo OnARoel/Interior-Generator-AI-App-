@@ -1,27 +1,16 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-const DesignType = ({ selectedDesign }) => {
+const DesignType = ({ selectedDesignType }) => {
   const Designs = [
-    {
-      name: "Modern",
-      image: "/modern.jpg",
-    },
-    {
-      name: "Minimalist",
-      image: "/minimalist.jpg",
-    },
-    {
-      name: "Rustic",
-      image: "/rustic.jpg",
-    },
-    {
-      name: "Traditional",
-      image: "/traditional.jpg",
-    },
+    { name: "Modern", image: "/modern.jpg" },
+    { name: "Minimalist", image: "/minimalist.jpg" },
+    { name: "Rustic", image: "/rustic.jpg" },
+    { name: "Traditional", image: "/traditional.jpg" },
   ];
 
-  const [selectedDesignType, setSelectedDesignType] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(null);
+
   return (
     <div>
       <label className="text-gray-500">Room Interior Design Type</label>
@@ -31,16 +20,15 @@ const DesignType = ({ selectedDesign }) => {
             className="border p-4 rounded-lg shadow-md flex flex-col items-center"
             key={design.image}
             onClick={() => {
-              setSelectedDesignType(design.name);
+              setSelectedOption(design.name); // Update local state
+              selectedDesignType(design.name); // Pass the selected design to the parent
             }}
           >
             <div className="w-full h-32 relative">
               <Image
                 style={{
                   border:
-                    selectedDesignType === design.name
-                      ? "2px solid blue"
-                      : "none", // Add border if selectedDesignType is true
+                    selectedOption === design.name ? "2px solid blue" : "none",
                 }}
                 src={design.image}
                 layout="fill"

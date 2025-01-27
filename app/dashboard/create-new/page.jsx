@@ -1,16 +1,29 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import ImageSelector from "./_components/ImageSelector";
 import RoomType from "./_components/RoomType";
 import DesignType from "./_components/DesignType";
 import TextArea from "./_components/TextInputArea";
 import TextInputArea from "./_components/TextInputArea";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
 
 const CreateNewDesign = () => {
+  const [formData, setFormData] = useState([]);
+
   const onHandleInputChange = (value, fieldName) => {
-    
+    setFormData((prev) => ({
+      ...prev,
+      [fieldName]: value,
+    }));
+
+    console.log(formData);
+  };
+
+  const GenerateImageAI = async () => {
+    const result = await axios.post("/api/redesign-room", formData);
+    console.log(result);
   };
   return (
     <>
@@ -33,7 +46,7 @@ const CreateNewDesign = () => {
             />
 
             <DesignType
-              selectedDesign={(value) =>
+              selectedDesignType={(value) =>
                 onHandleInputChange(value, "designType")
               }
             />
@@ -44,7 +57,9 @@ const CreateNewDesign = () => {
               }
             />
 
-            <Button className="w-full mt-5">Generate</Button>
+            <Button onClick={GenerateImageAI} className="w-full mt-5">
+              Generate
+            </Button>
             <p className="text-sm text-gray-400 mb-52">
               One credit will be used to design a room
             </p>
