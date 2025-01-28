@@ -13,7 +13,7 @@ const ImageSelector = ({ selectedImage }) => {
 
   return (
     <div>
-      <label htmlFor="upload-image">Select an Image</label>
+      <label htmlFor="upload-image">Upload an Image</label>
       <div className="mt-3">
         <label htmlFor="upload-image">
           <div
@@ -24,8 +24,8 @@ const ImageSelector = ({ selectedImage }) => {
               className="w-[200px] h-[200px] object-cover"
               src={file ? URL.createObjectURL(file) : "/upload.jpg"}
               alt={file ? "selected image" : "upload image"}
-              width={50}
-              height={70}
+              width={200}
+              height={200}
             />
           </div>
         </label>

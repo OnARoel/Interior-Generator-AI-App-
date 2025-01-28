@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ImageSelector from "./_components/ImageSelector";
 import RoomType from "./_components/RoomType";
 import DesignType from "./_components/DesignType";
@@ -25,9 +25,9 @@ const CreateNewDesign = () => {
     if (aiOutput) setOpenDialog(true);
   }, [aiOutput]);
 
-  const handleInputChange = (value, fieldName) => {
+  const handleInputChange = useCallback((value, fieldName) => {
     setFormData((prev) => ({ ...prev, [fieldName]: value }));
-  };
+  }, []);
 
   const generateImage = async () => {
     setLoading(true);
@@ -54,12 +54,12 @@ const CreateNewDesign = () => {
   };
 
   const uploadImageToFirebase = async () => {
-    try {
-      if (!formData.image) {
-        console.error("No image selected");
-        return null;
-      }
+    if (!formData.image) {
+      console.error("No image selected");
+      return null;
+    }
 
+    try {
       const fileName = `${Date.now()}_raw.png`;
       const imageRef = ref(storage, `room-redesign/${fileName}`);
       await uploadBytes(imageRef, formData.image);
@@ -78,7 +78,12 @@ const CreateNewDesign = () => {
         Experience AI Generated room designs!
       </h2>
       <p className="text-center text-gray-400">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt
+        Upload a room to use as a template, select your design type and roomtype
+        plus add some details and then boom!
+      </p>
+
+      <p className="text-center text-gray-400">
+        We will generate a redesigned AI interior room for you!
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 mt-8 gap-10">
@@ -106,7 +111,7 @@ const CreateNewDesign = () => {
           </Button>
 
           <p className="text-sm text-gray-400 mb-52">
-            One credit will be used to design a room
+            It will take approximately 10-15 seconds to generate your image!
           </p>
         </div>
       </div>

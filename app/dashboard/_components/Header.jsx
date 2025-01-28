@@ -14,20 +14,20 @@ const Header = () => {
     <header className="p-5 shadow-sm flex justify-between items-center">
       <div className="flex gap-3 items-center">
         <Image src="/logo.svg" alt="Logo" width={25} height={25} />
-        <Link href="/dashboard/create-new">
-          <h2 className="font-bold text-lg">Design your AI Generated Room</h2>
+        <Link href="/dashboard/">
+          <h2 className="font-bold text-lg">View your Designs</h2>
         </Link>
       </div>
 
-      <Button variant="ghost" className="rounded-full text-primary">
+      {/* <Button variant="ghost" className="rounded-full text-primary">
         Buy Credits
-      </Button>
+      </Button> */}
 
       <div className="flex gap-4 items-center">
-        <div className="flex gap-2 p-1 items-center bg-slate-200 px-3 rounded-full">
-          <Image src="/star.svg" alt="Star" width={25} height={25} />
-          <h3 className="font-semibold">{userDetail?.credits}</h3>
-        </div>
+        {/* <div className="flex gap-2 p-1 items-center bg-slate-200 px-3 rounded-full">
+          {/* <Image src="/star.svg" alt="Star" width={25} height={25} />
+          <h3 className="font-semibold">{userDetail?.credits}</h3> */}
+        {/* </div> */} 
         <UserButton />
       </div>
     </header>

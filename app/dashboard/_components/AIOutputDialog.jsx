@@ -10,9 +10,7 @@ import "react-before-after-slider-component/dist/build.css";
 import { Button } from "@/components/ui/button";
 
 const AIOutputDialog = ({ openDialog, closeDialog, orgImage, aiImage }) => {
-    {console.log(orgImage)}
-    {console.log(aiImage)}
-    return (
+  return (
     <div>
       <AlertDialog open={openDialog}>
         <AlertDialogContent>
@@ -21,13 +19,20 @@ const AIOutputDialog = ({ openDialog, closeDialog, orgImage, aiImage }) => {
           </AlertDialogHeader>
           <ReactBeforeSliderComponent
             firstImage={{
-                imageUrl: orgImage
+              imageUrl: aiImage,
             }}
             secondImage={{
-                imageUrl: aiImage
+              imageUrl: orgImage,
             }}
           />
-          <Button onClick={() => closeDialog(false)}>Close</Button>
+          <div className="flex items-center justify-between mt-4">
+            <Button variant="secondary" onClick={() => closeDialog(false)}>
+              Close
+            </Button>
+            <a href={aiImage} target="_blank" rel="noopener noreferrer">
+              <Button>View</Button>
+            </a>
+          </div>
         </AlertDialogContent>
       </AlertDialog>
     </div>
