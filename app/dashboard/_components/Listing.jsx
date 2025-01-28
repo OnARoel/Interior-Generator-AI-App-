@@ -44,10 +44,8 @@ const Listing = () => {
         <Empty />
       ) : (
         <div className="flex flex-col mb-5 mt-5">
-          <h2 className="font-medium text-primary text-xl mb-10">
-            Here are your generated rooms
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <h2 className="font-medium text-primary">Here are your generated rooms:</h2>
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10 overflow-hidden">
             {userRoomList.map((room, index) => (
               <RoomDesign key={index} room={room} />
             ))}
