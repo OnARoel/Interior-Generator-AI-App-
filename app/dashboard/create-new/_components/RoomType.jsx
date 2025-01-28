@@ -15,11 +15,11 @@ const RoomType = ({selectedRoomValue}) => (
                 <SelectValue placeholder="Room Type" />
             </SelectTrigger>
             <SelectContent>
-                <SelectItem value="living-room">Living Room</SelectItem>
-                <SelectItem value="bedroom">Bedroom</SelectItem>
-                <SelectItem value="kitchen">Kitchen</SelectItem>
-                <SelectItem value="office">Office</SelectItem>
-                <SelectItem value="bathroom">Bathroom</SelectItem>
+                <SelectItem value="Living-room">Living Room</SelectItem>
+                <SelectItem value="Bedroom">Bedroom</SelectItem>
+                <SelectItem value="Kitchen">Kitchen</SelectItem>
+                <SelectItem value="Office">Office</SelectItem>
+                <SelectItem value="Bathroom">Bathroom</SelectItem>
             </SelectContent>
         </Select>
     </div>
