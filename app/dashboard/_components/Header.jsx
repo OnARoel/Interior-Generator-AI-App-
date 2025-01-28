@@ -5,6 +5,7 @@ import Image from "next/image";
 import { UserButton } from "@clerk/nextjs";
 import { UserDetails } from "@/app/_context/UserDetails";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const Header = () => {
   const { userDetail } = useContext(UserDetails);
@@ -13,7 +14,9 @@ const Header = () => {
     <header className="p-5 shadow-sm flex justify-between items-center">
       <div className="flex gap-3 items-center">
         <Image src="/logo.svg" alt="Logo" width={25} height={25} />
-        <h2 className="font-bold text-lg">Design your AI Generated Room</h2>
+        <Link href="/dashboard/create-new">
+          <h2 className="font-bold text-lg">Design your AI Generated Room</h2>
+        </Link>
       </div>
 
       <Button variant="ghost" className="rounded-full text-primary">
